@@ -1,0 +1,25 @@
+{% extends "blog_post/blog_base.html" %}
+{% load static %}
+{% block title_tag %}
+    <title>Profile</title>
+    {% endblock %}
+{% block st %}
+        <style>
+
+h1,a{
+
+    font-family: 'PT Serif', serif;
+}
+</style>
+    {% endblock %}
+{% block content %}
+<div class="container container-fluid">
+       <h1>Are you sure to Delete <i style="color: red;">{{post.title | safe}}</i> ???</h1><hr>
+       <form method="post">
+       {% csrf_token %}
+          <input type="submit" class="btn btn-danger btn-lg" value="Delete Record">
+          <a href="/{{ post.id }}" class="btn btn-success">Cancel</a>
+       </form>
+</div>
+
+{% endblock content %}

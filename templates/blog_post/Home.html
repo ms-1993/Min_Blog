@@ -1,0 +1,129 @@
+{% extends "blog_post/blog_base.html" %}
+{% load static %}
+{% block content %}
+
+
+    {% block st %}
+        <style>
+
+
+#filter >label{
+ padding: 12px 19px 12px 205px;
+  display: inline-block;
+    font-size: larger;
+font-family: 'PT Serif', serif;
+
+}
+#filter >input,#filter >select{
+    font-size:18px;
+    border-collapse: collapse;
+    touch-action: pan-x;
+    border-radius:10%;
+    border:10px;
+    color: black;
+    font-family: 'PT Serif', serif;
+}
+</style>
+    {% endblock %}
+<!--
+SEARCH
+-->
+    <div class="col-md-12 bg-light text-title ">
+    <form class="form-inline unform" id="filter">
+
+    {{ filter.form  }}
+        <button id="bt" class="btn btn-primary btn-lg float-right " style="margin-inline-end: auto" type="submit">Search</button>
+    </form>
+</div>
+
+    <!-- SEARCH -->
+    <!-- BLOG -->
+    <section class="blog">
+
+        <div class="container">
+            <div class="row">
+
+                <!-- BLOG LIST -->
+                <div class="col-md-8">
+                    <div class="blog-list-content">
+                    {% if filter %}
+                    <!-- SEARCH POST -->
+                        {% for post in filter.qs %}
+                        <div class="post">
+                            <!-- POST MEDIA -->
+                            <div class="post-media">
+                                <div class="image-thumb">
+                                    {% if post.thumbnail %}
+                                            <img class="card-img-top" src="{{ post.thumbnail.url | safe }}" alt="Card image cap">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <!-- END / POST MEDIA -->
+
+                            <!-- POST BODY -->
+                            <div class="post-body">
+                                <div class="post-title">
+                                    <h3 class="md"><a href="{% url 'post_detail' post.id  %}">{{ post.title | safe}}</a></h3>
+                                </div>
+                                <div class="post-meta">
+                                    by <a href="#">{{ post.author | safe}} </a> on {{ post.posted_date_on }}
+                                </div>
+                                <div class="post-content">
+                                    <p>{{post.Body| safe |slice:':200'}}</p>
+                                </div>
+                                <div class="post-link">
+                                    <a href="{% url 'post_detail' post.id  %}" >
+                                        <i class="fa fa-play-circle-o"></i>
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- END / POST BODY -->
+                        </div>
+                        <!-- END / POST -->
+                        {% endfor %}
+                    {% else %}
+                        <!-- POST -->
+                        {% for post in post_list %}
+                        <div class="post">
+                            <!-- POST MEDIA -->
+                            <div class="post-media">
+                                <div class="image-thumb">
+                                    {% if post.thumbnail %}
+                                            <img class="card-img-top" src="{{ post.thumbnail.url | safe }}" alt="Card image cap">
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <!-- END / POST MEDIA -->
+
+                            <!-- POST BODY -->
+                            <div class="post-body">
+                                <div class="post-title">
+                                    <h3 class="md"><a href="#">{{ post.title | safe}}</a></h3>
+                                </div>
+                                <div class="post-meta">
+                                    by <a href="#">{{ post.author | safe}} </a> on {{ post.posted_date_on }}
+                                </div>
+                                <div class="post-content">
+                                    <p>{{post.Body| safe |slice:':200'}}</p>
+                                </div>
+                                <div class="post-link">
+                                    <a href="{% url 'post_detail' post.id  %}" >
+                                        <i class="fa fa-play-circle-o"></i>
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- END / POST BODY -->
+                        </div>
+                        <!-- END / POST -->
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- END / BLOG -->
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "blog_post/blog_base.html" %}
+{% load static %}
+{% block title_tag %}
+    <title>Profile</title>
+    {% endblock %}
+{% block st %}
+        <style>
+
+h1,a,p,.table,button,td{
+
+    font-family: 'PT Serif', serif;
+}
+</style>
+    {% endblock %}
+{% block content %}
+<div class="container">
+
+<table class="table">
+    <th>User Details</th>
+   <tr>
+       <td> Email: {{ user.email }}</td>
+       <td> Mobile {{ user.mobile }}</td>
+   </tr>
+    <a href="{% url 'post_create' %}" class="btn btn-primary">Create New Post</a>
+</table>
+
+
+
+
+    <div class="container-fluid">
+    <h2>User Their {{ user.email }}Blog Posts</h2>
+    {% if posts %}
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for post in posts %}
+            <div class="card mb-4">
+            {{% if post.thumbnail %}
+                                            <img class="card-img-top" src="{{ post.thumbnail.url | safe }}" alt="Card image cap">
+                                    {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.title | safe}}</h2>
+                    <p class="card-text text-muted h6">{{ post.author | safe }} | {{ post.posted_date_on }} </p>
+                    <p class="card-text">{{post.Body| safe |slice:':200'}}</p>
+                    <a href="{% url 'post_detail' post.id  %}" class="btn btn-primary">Post Details &rarr;</a>
+                    <a href="{% url 'post_delete' post.id  %}" class="btn btn-primary">Delete Post</a>
+                    <a href="{% url 'post_update' post.id  %}" class="btn btn-primary">update Post</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+    {% else %}
+        <h2>ohoooo...........? Their Is NO Blog or Post Not Their.</h2>
+    {% endif %}
+    </div>
+</div>
+
+{% endblock content %}

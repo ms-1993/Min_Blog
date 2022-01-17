@@ -1,0 +1,46 @@
+{% extends 'blog/base.html'%}
+{% load static %}
+{% block content %}
+<pre style="align-items: center">
+"""
+Project : DIY Django Mini Blog
+Tech stack : Django, Python, HTML, CSS , JavaScript
+Description
+Create a blog web application with following components:-
+
+• Home page
+●	Display all posts along with their author name, posted date & thumbnail.
+    ◦ Add search options to search blog by title and author.
+●	 AUTH: Any Anonymous users can read blogs.
+
+
+
+• Registration Page
+●	Register new users as authors.
+Registration fields: users email, mobile , username, password.
+●	Username/ Email must be unique.
+
+
+• Login Page
+Allow users to login with username/Email and password.
+Add forgot password link. Reset new password through email.
+
+"""
+"""
+
+• Add New Blog Page
+◦ Field: Blog Title, Blog Body, thumbnail image.
+◦ AUTH: Only Authenticated users.
+
+
+• Users Profile
+◦ Display list of their blogs.
+◦ Add /Remove blog options.
+◦ AUTH: Only Authenticated users.
+
+
+
+Upload tasks to your github account and share the link of the project.
+Or else you can deploy this project and share the url.
+</pre>
+{% endblock content %}

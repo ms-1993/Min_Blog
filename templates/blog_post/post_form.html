@@ -1,0 +1,27 @@
+{% extends "blog_post/blog_base.html" %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block title_tag %}
+    <title>Profile</title>
+    {% endblock %}
+{% block st %}
+        <style>
+
+h1,a,p,input{
+
+    font-family: 'PT Serif', serif;
+}
+</style>
+    {% endblock %}
+{% block content %}
+<div class="container container-fluid">
+      <h1>post Create Form</h1><hr>
+       <form method="post" enctype="multipart/form-data" >
+       {% csrf_token %}
+          {{ form.media  }}
+          {{ form.as_p }}
+           <input type="submit" class="btn btn-primary btn-lg" value="Insert Record">
+       </form>
+</div>
+
+{% endblock content %}

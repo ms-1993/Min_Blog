@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'Blog/ac/img/favicon.png' %}">
+    <!-- Google font -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Blog/post/css/library/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Blog/post/css/library/font-awesome.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Blog/post/css/md-font.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'Blog/post/css/style.css' %}">
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
+
+<style>
+    *{
+        font-family: 'PT Serif', serif;
+    }
+</style>
+    {% block st %}{% endblock %}
+
+</head>
+<body id="page-top">
+
+<!-- PAGE WRAP -->
+<div id="page-wrap">
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+
+    </div>
+    <!-- END / PRELOADER -->
+
+    <!-- HEADER -->
+    <header id="header" class="header">
+        <div class="container mt-6 pt-8">
+
+        <div class="navbar-header ">
+              <a class="navbar-brand" href="{% url 'home' %}">DIY Django Mini Blog</a>
+            </div>
+            <!-- NAVIGATION -->
+            <nav class="navigation">
+
+                <div class="open-menu">
+                    <span class="item item-1"></span>
+                    <span class="item item-2"></span>
+                    <span class="item item-3"></span>
+                </div>
+
+                <!-- MENU -->
+                <ul class="menu">
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">UserProfile</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'logout' %}">LogOut</a></li>
+                                    {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Register</a></li>
+                   {% endif %}
+                </ul>
+                <!-- END / MENU -->
+
+
+
+
+            </nav>
+            <!-- END / NAVIGATION -->
+
+        </div>
+    </header>
+    <!-- END / HEADER -->
+
+
+    <!-- SUB BANNER -->
+    <section class="sub-banner sub-banner-course">
+        <div class="awe-static bg-sub-banner-course"></div>
+        <div class="container">
+            <div class="sub-banner-content">
+                <h2 class="text-center"></h2>
+
+                        {% if user.is_authenticated %}
+                         <h2 class="text-center">Welcome to my awesome Blog {{ user.email }}</h2>
+                        {% else %}
+                            <h2 class="text-center">Welcome to my awesome Blog</h2>
+                        {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- END / SUB BANNER -->
+
+
+
+    <!-- BLOG -->
+     {% block content %}
+
+     {% endblock %}
+    <!-- END / BLOG -->
+
+
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer">
+
+
+        <div class="second-footer">
+            <div class="container">
+                <div class="contact">
+                    <div class="email">
+                        <i class="icon md-email"></i>
+                        <a href="#">mohan@Gmail.com</a>
+                    </div>
+                    <div class="phone">
+                        <i class="fa fa-mobile"></i>
+                        <span>+84 989 999 888</span>
+                    </div>
+                    <div class="address">
+                        <i class="fa fa-map-marker"></i>
+                        <span>mohan place</span>
+                    </div>
+                </div>
+                <p class="copyright">Copyright © 2022 Happy Pongal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- END / FOOTER -->
+
+
+
+
+
+</div>
+<!-- END / PAGE WRAP -->
+
+<!-- Load jQuery -->
+<script type="text/javascript" src="{% static 'Blog/post/js/library/jquery-1.11.0.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Blog/post/js/library/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Blog/post/js/library/jquery.owl.carousel.js' %}"></script>
+<script type="text/javascript" src="{% static 'Blog/post/js/library/jquery.appear.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Blog/post/js/library/perfect-scrollbar.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Blog/post/js/library/jquery.easing.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'Blog/post/js/scripts.js' %}"></script>
+
+</body>
+</html>

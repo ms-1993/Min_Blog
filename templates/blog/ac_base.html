@@ -1,0 +1,88 @@
+
+<!doctype html>
+
+<html class="no-js" lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title_tag %}{% endblock %}</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'Blog/ac/img/favicon.png' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'Blog/ac/css/bootstrap.min.css '%}">
+    <!-- Fontawesome CSS -->
+   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
+    <!-- Flaticon CSS -->
+    <link rel=”stylesheet” href=”https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css”>
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'Blog/ac/css/style.css' %}" rel="stylesheet">
+<style>
+    *{
+        font-family: 'PT Serif', serif;
+    }
+</style>
+    {% block styles_block %}{% endblock %}
+</head>
+
+<body>
+
+    <div id="preloader" class="preloader">
+        <div class='inner'>
+            <div class='line1'></div>
+            <div class='line2'></div>
+            <div class='line3'></div>
+        </div>
+    </div>
+
+<div class="mt-5">
+      <section class="fxt-template-animation fxt-blog" data-bg-image='{%  static "Blog/img/figure/bg24-l.jpg" %}'>
+        <!-- Video Area Start Here -->
+        <div class="fxt-video-background">
+            <div class="fxt-video">
+                <div id="fxtVideo" data-property="{
+                    videoURL:'F_7ZoAQ3aJM',
+                    autoPlay:true,
+                    mute:true,
+                    loop:true,
+                    startAt:0,
+                    opacity:1,
+                    quality:'default',
+                    showControls:false,
+                    optimizeDisplay:true,
+                    containment:'.fxt-video-background'
+                }">
+                </div>
+            </div>
+        </div>
+        <!-- Video Area Start Here -->
+     {% block content %}
+
+     {% endblock %}
+    </section>
+</div>
+
+    <!-- jquery-->
+    <script src="{% static 'Blog/ac/js/jquery-3.5.0.min.js '%}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static 'Blog/ac/js/bootstrap.min.js '%}"></script>
+    <!-- Imagesloaded js -->
+    <script src="{% static 'Blog/ac/js/imagesloaded.pkgd.min.js '%}"></script>
+    <!-- YouTube js -->
+    <script src="{% static 'Blog/ac/js/jquery.mb.YTPlayer.min.js '%}"></script>
+    <!-- Validator js -->
+    <script src="{% static 'Blog/ac/js/validator.min.js '%}"></script>
+    <!-- Custom Js -->
+    <script src="{% static 'Blog/ac/js/main.js '%}"></script>
+
+</body>
+
+</html>

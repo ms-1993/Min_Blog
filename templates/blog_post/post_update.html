@@ -1,0 +1,33 @@
+{% extends "blog_post/blog_base.html" %}
+{% load crispy_forms_filters %}
+{% load static %}
+{% block title_tag %}
+    <title>Profile</title>
+    {% endblock %}
+{% block st %}
+        <style>
+
+h5,a,div,button{
+
+    font-family: 'PT Serif', serif;
+}
+</style>
+    {% endblock %}
+{% block content %}
+<div class="container container-fluid">
+<div class="card">
+    <div class="card-header">
+        <h5 class="card-title">Post Update #{{post.id }}</h5>
+    </div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+              {{ form.media }}
+             {{ form.as_p }}
+
+            <button type="submit" class="btn btn-success">Update</button>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}

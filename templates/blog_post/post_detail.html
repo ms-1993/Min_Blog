@@ -1,0 +1,63 @@
+{% extends "blog_post/blog_base.html" %}
+{% load static %}
+
+{% block st %}
+        <style>
+
+h1,a,div{
+
+    font-family: 'PT Serif', serif;
+}
+</style>
+    {% endblock %}
+{% block content %}
+    <!-- BLOG -->
+    <section class="blog">
+
+   <div class="container container-fluid">
+            <div class="row">
+
+                <!-- BLOG LIST -->
+                <div class="col">
+                    <div class="blog-single-content">
+                        <!-- POST -->
+                        <div class="post post-single">
+                            <div class="post-title col-8">
+                                <h1 class="big">{% block title %} {{ object.title | safe}} {% endblock title %}</h1>
+                            </div>
+                            <div class="post-meta">
+                                by <a href="#">{{ post.author | safe}} </a> on {{ post.posted_date_on }}
+                            </div>
+
+                            <div class="post-media">
+                                         {% if post.thumbnail %}
+                                            <img class="card-img-top" src="{{ post.thumbnail.url | safe }}" alt="Card image cap">
+                                    {% endif %}
+                            </div>
+
+                            <div class="post-content">
+                                    {{post.Body|safe }}
+                            </div>
+
+
+
+
+                        </div>
+                        <!-- END / POST -->
+
+
+
+
+                    </div>
+                </div>
+                <!-- END / BLOG LIST -->
+
+
+
+
+            </div>
+        </div>
+
+    </section>
+    <!-- END / BLOG -->
+{% endblock %}
